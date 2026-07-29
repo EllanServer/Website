@@ -17,7 +17,7 @@
 	--radius-md: 14px;
 	--radius-lg: 22px;
 	--transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	--font-display: cnm, 'Inter', system-ui, -apple-system, sans-serif;
+	--font-display: site, 'Inter', system-ui, -apple-system, sans-serif;
 	--font-body: 'Inter', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
@@ -42,8 +42,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 /* Custom Font */
 @font-face {
-	font-family: cnm;
-	src: url("../font/cnm.sb.ttf");
+	font-family: site;
+	src: url("../font/site.ttf");
 	font-display: swap;
 }
 
