@@ -1,0 +1,228 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #3d3d3d;
+  color: #f2f2f2;
+  line-height: 1.6;
+}
+
+nav {
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+
+nav img {
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  height: 70px;
+  margin-right: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav a {
+  position: relative;
+  color: #000000;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.4s ease, transform 0.3s ease;
+  display: inline-block;
+  padding: 8px 5px;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: #000000;
+  width: 0%;
+  margin: 4px auto 0 auto;
+  border-radius: 2px;
+  transition: width 0.4s ease-in-out;
+}
+
+nav a:hover {
+  color: #000000;
+  transform: scale(1.1);
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: #000000;
+}
+
+
+main {
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.image_general {
+  display: block;
+  margin: 20px auto; 
+  max-width: 200%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.timeline {
+  border-left: 3px solid #f2f2f2;
+  margin-left: 20px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.timeline-event {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 20px;
+}
+
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: -41px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #dddddd;
+  border-radius: 50%;
+  border: 3px solid #3d3d3d;
+}
+
+.timeline-event .date {
+  font-weight: bold;
+  font-size: 16px;
+  color: #cccccc;
+  margin-bottom: 5px;
+}
+
+.timeline-event .content {
+  font-size: 17px;
+  color: #f2f2f2;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #dddddd;
+}
+
+.survivor-story {
+  background-color: #282828;
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 5px solid #ffffff;
+  border-radius: 5px;
+}
+
+.survivor-story h2 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  border-left: 4px solid #f2f2f2;
+  padding-left: 10px;
+}
+
+.intro-text p,
+.context-text p,
+.reflection-text p {
+  font-size: 17px;
+  color: #dddddd;
+}
+
+.quote {
+  background-color: #1c1c1c;
+  padding: 20px;
+  margin-top: 25px;
+  border-left: 6px solid #f2f2f2;
+  font-style: italic;
+  font-size: 18px;
+  color: #cccccc;
+  border-radius: 4px;
+}
+
+
+blockquote {
+  margin: 15px 0;
+  padding: 10px 20px;
+  background-color: #060606;
+  border-left: 5px solid #656565;
+  font-style: italic;
+  color: #cccccc;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.survivor-story p {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.resources-section {
+  margin-top: 60px;
+}
+
+.resources-section h2 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-left: 4px solid #f2f2f2;
+  padding-left: 10px;
+}
+
+.resource-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.resource-list li {
+  margin-bottom: 12px;
+}
+
+.resource-list a {
+  color: #a5d6ff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.resource-list a:hover {
+  text-decoration: underline;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
