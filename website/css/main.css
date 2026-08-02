@@ -219,6 +219,7 @@ h1, h2, h3, .kicker, .btn {
 	background: var(--grad);
 	background-size: 160% 100%;
 	color: #16240e;
+	-webkit-text-fill-color: #16240e;
 	box-shadow: 0 12px 32px rgba(143, 221, 85, 0.26);
 }
 .btn-rune:hover { filter: brightness(1.1); background-position: 80% 0; }
@@ -232,7 +233,7 @@ h1, h2, h3, .kicker, .btn {
 /* 夜景上的次级入口：接近 iOS Clear Liquid Glass 的清透凸透镜。 */
 .btn-sm { min-height: 38px; padding: 8px 16px; font-size: 12px; }
 .btn-quiet { color: var(--text-dim); box-shadow: inset 0 0 0 1.5px var(--line); }
-.btn-copy strong { font-family: var(--font-display); font-size: 13px; letter-spacing: 0.06em; }
+.btn-copy strong { font-family: var(--font-display); font-size: 13px; letter-spacing: 0.06em; color: inherit; }
 
 /* ---------- 页头 ---------- */
 #site-header {
@@ -1313,6 +1314,7 @@ footer { border-top: 1px solid var(--line); }
 		rgba(94, 214, 196, 0.70) 100%
 	);
 	color: #16240e;
+	-webkit-text-fill-color: #16240e;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 .liquid-glass.btn-rune::before {
