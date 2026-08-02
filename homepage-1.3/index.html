@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN">
 
 <head>
 	<meta charset="UTF-8">
@@ -14,221 +14,225 @@
 	<meta property="og:title" content="Ellan 艾尔岚 · 原版生存 Minecraft 服务器">
 	<meta property="og:description" content="动态经济 · 每日任务 · 生活拓展 · 纯公益长期服">
 	<meta property="og:url" content="https://ellan.site/">
-	<meta property="og:image" content="https://ellan.site/img/cover.jpeg">
+	<meta property="og:image" content="https://ellan.site/img/hero-world.jpg">
 	<meta name="twitter:card" content="summary_large_image">
 	<link rel="icon" href="img/icon.png">
 	<link rel="preconnect" href="https://api.mcsrvstat.us" crossorigin>
-	<link rel="preload" as="image" href="img/cover.jpeg">
-	<link rel="preload" as="image" href="img/intro-sign-board.png">
-	<link rel="preload" as="image" href="img/wood-texture.jpg">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="preload" as="image" href="img/hero-world-hd.webp" type="image/webp" fetchpriority="high">
 	<script>
-		(function () {
-			var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-			var forceIntro = new URLSearchParams(window.location.search).get('intro') === '1';
-			var seen = false;
-			try { seen = sessionStorage.getItem('ellan-forge-intro-seen') === '1'; } catch (e) {}
-			if (!reduced && (forceIntro || !seen)) document.documentElement.classList.add('forge-enabled');
-		})();
+		try {
+			if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('ellan:page-transition-target') === location.pathname) document.documentElement.classList.add('page-arriving');
+		} catch (e) { /* storage may be unavailable */ }
 	</script>
-	<script defer src="js/main.js"></script>
-	<script defer src="js/server-status.js"></script>
+	<link rel="stylesheet" href="css/main.css?v=20260802-gameplay-gallery">
+	<script defer src="js/main.js?v=20260801-liquid-glass-v3"></script>
+	<script defer src="js/server-status.js?v=20260731-mc-v5"></script>
+	<script defer src="js/showcase.js?v=20260802-city-gallery-v1"></script>
+	<script defer src="js/liquid-glass.js?v=20260801-liquid-glass-v5"></script>
 </head>
 
 <body>
-	<div id="forge-intro" class="forge-intro" aria-labelledby="forge-intro-title">
-		<div class="forge-gate forge-gate-left" aria-hidden="true"></div>
-		<div class="forge-gate forge-gate-right" aria-hidden="true"></div>
-		<button id="forge-skip" class="forge-skip" type="button">跳过动画</button>
-		<div class="forge-stage">
-			<p id="forge-intro-title" class="forge-intro-title"><span>ELLAN.TOP</span> 正在锻造你的世界</p>
-			<div class="forge-impact-flash" aria-hidden="true"></div>
-			<img class="forge-hammer" src="img/intro-hammer.png" alt="" draggable="false">
-			<img class="forge-anvil" src="img/intro-anvil.png" alt="" draggable="false">
-		</div>
-	</div>
-
 	<a class="skip-link" href="#main">跳到主要内容</a>
 
 	<header id="site-header">
 		<nav class="nav container" aria-label="主导航">
 			<a class="nav-brand" href="#top" aria-label="艾尔岚首页">
-				<img src="img/icon.png" alt="艾尔岚 Logo" width="38" height="38">
-				<span class="nav-brand-copy"><strong>ELLAN.TOP</strong><small>艾尔岚 · 2020—2026</small></span>
+				<img src="img/icon.png" alt="艾尔岚 Logo" width="34" height="34">
+				<span class="nav-brand-copy"><strong>ELLAN.TOP</strong></span>
 			</a>
 			<div class="nav-links">
-				<a href="#top" class="nav-link active">首页</a>
-				<a href="#features" class="nav-link">核心玩法</a>
-				<a href="#intro" class="nav-link">大陆图鉴</a>
-				<a href="#team" class="nav-link">运营团队</a>
-				<a href="#links" class="nav-link">新手指南</a>
+				<a href="#top" class="nav-link active" data-scroll-section="top">首页</a>
+				<a href="#features" class="nav-link" data-scroll-section="features">核心玩法</a>
+				<a href="#intro" class="nav-link" data-scroll-section="intro">大陆图鉴</a>
+				<a href="#team" class="nav-link" data-scroll-section="team">运营团队</a>
+				<a href="#links" class="nav-link" data-scroll-section="links">新手指南</a>
 			</div>
 			<div class="nav-actions">
-				<span class="nav-live"><i aria-hidden="true"></i>服务器在线</span>
-				<a class="btn btn-iron btn-sm" href="links/index.html" target="_blank" rel="noopener noreferrer">在线游玩</a>
+				<span class="nav-live" id="nav-live"><i aria-hidden="true"></i><b id="nav-live-label">连接中</b></span>
+				<a class="btn btn-ghost btn-sm" href="links/index.html" target="_blank" rel="noopener noreferrer"><span>在线游玩</span></a>
 			</div>
 		</nav>
 	</header>
+	<script>
+		(function () {
+			var target = (location.hash || '#top').slice(1);
+			var links = document.querySelectorAll('#site-header .nav-link');
+			var active = null;
+			links.forEach(function (link) {
+				if (link.getAttribute('data-scroll-section') === target) active = link;
+				link.classList.remove('active');
+				link.removeAttribute('aria-current');
+			});
+			if (active) {
+				active.classList.add('active');
+				active.setAttribute('aria-current', 'location');
+			}
+		})();
+	</script>
 
 	<main id="main">
 		<section id="top" class="hero">
-			<div class="hero-backdrop" aria-hidden="true"></div>
-			<div class="container hero-grid">
-				<div class="hero-copy">
-					<p class="hero-kicker"><span class="status-pulse" aria-hidden="true"></span> PURE SURVIVAL · LONG-TERM WORLD</p>
-					<h1><span>原版生存，</span><em>每一次上线都有目标</em></h1>
-					<p class="hero-lead">交易改变全服物价，任务推进成长节奏；家具、钓鱼与酿酒，让一张长期地图真正有生活。</p>
-
-					<div class="hero-actions">
-						<button class="btn btn-rune btn-copy" type="button" onclick="copyServerIP()">复制 IP <strong>ellan.top</strong></button>
-						<a class="btn btn-iron" href="#features">查看核心玩法</a>
-						<button class="hero-text-action" type="button" onclick="showDownloadOptions()">下载客户端</button>
-					</div>
-
-					<div id="server-card" class="server-card material-iron">
-						<img id="server-icon" src="img/icon.png" alt="服务器图标" width="52" height="52">
-						<div class="server-info">
-							<p id="server-motd" class="server-motd">MOTD 加载中…</p>
-							<p class="server-meta"><span id="server-version">版本载入中</span><span id="server-players">在线载入中</span><span id="server-ping"></span></p>
-						</div>
-						<span class="server-live-label">实时状态</span>
-					</div>
-
-					<div class="hero-principles" aria-label="服务器承诺">
-						<span><b>纯公益服</b><small>不卖数值优势</small></span>
-						<span><b>不限红石</b><small>保留创造自由</small></span>
-						<span><b>多年老牌</b><small>长期稳定运营</small></span>
-					</div>
+			<div class="hero-art" aria-hidden="true"><img id="hero-art-img" src="img/hero-world-hd.webp" alt=""></div>
+			<div class="hero-content container">
+				<p class="hero-kicker"><span class="dot" aria-hidden="true"></span>我的世界 · 原版生存服务器</p>
+				<h1 class="hero-logo"><span class="grad-text">艾尔岚</span></h1>
+				<div class="hero-chips">
+					<span class="chip chip-live"><i aria-hidden="true"></i><b id="hero-online">连接中</b></span>
+					<span class="chip">2020—2026</span>
+					<span class="chip">纯公益</span>
+					<span class="chip">不限红石</span>
 				</div>
-
-				<div class="hero-showcase">
-					<figure class="world-frame material-frame">
-						<img src="img/cover.jpeg" alt="艾尔岚服务器玩家在主城合影" fetchpriority="high">
-						<figcaption><span>艾尔岚大陆</span><small>冒险家集合 · 真实玩家社区</small></figcaption>
-					</figure>
-
-					<div class="motd-sign-drop">
-						<div id="motd-sign-rig" class="motd-sign-rig">
-							<span class="motd-chain motd-chain-left" data-chain-side="left" aria-hidden="true">
-								<img class="motd-chain-link" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link motd-chain-link-side" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link motd-chain-link-side" src="img/intro-chain-link.png" alt="" draggable="false">
-							</span>
-							<span class="motd-chain motd-chain-right" data-chain-side="right" aria-hidden="true">
-								<img class="motd-chain-link motd-chain-link-side" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link motd-chain-link-side" src="img/intro-chain-link.png" alt="" draggable="false">
-								<img class="motd-chain-link" src="img/intro-chain-link.png" alt="" draggable="false">
-							</span>
-							<button id="motd-sign" class="motd-sign-board" type="button" onclick="copyWebsiteLink()" aria-label="复制艾尔岚官网链接 https://ellan.site/">
-								<img src="img/intro-sign-board.png" alt="" draggable="false">
-								<span class="motd-sign-content">
-									<strong>艾尔岚 · ELLAN.TOP</strong>
-									<span id="intro-motd">寻缘草开时相见，叶瓣凋落一轮回</span>
-									<small>点击复制官网链接</small>
-								</span>
-							</button>
-						</div>
-					</div>
+				<div class="hero-actions">
+					<button class="btn btn-rune btn-copy" type="button" onclick="copyServerIP()">复制 IP <strong>ellan.top</strong></button>
+					<a class="btn btn-ghost" href="#features"><span>查看核心玩法</span></a>
+					<button class="hero-text-action" type="button" onclick="showDownloadOptions()">下载客户端</button>
 				</div>
 			</div>
+			<div class="scroll-hint" aria-hidden="true"><span>向下浏览</span><i></i></div>
+		</section>
 
-			<div class="container gameplay-entry" aria-label="核心玩法入口">
-				<div class="gameplay-entry-heading">
-					<span>CORE GAMEPLAY</span>
-					<strong>三条长期循环</strong>
-				</div>
-				<a href="#features" data-gameplay-link="economy"><b>01</b><span><strong>动态经济</strong><small>玩家交易决定实时物价</small></span></a>
-				<a href="#features" data-gameplay-link="daily"><b>02</b><span><strong>每日任务</strong><small>每天都有清晰成长目标</small></span></a>
-				<a href="#features" data-gameplay-link="life"><b>03</b><span><strong>生活拓展</strong><small>家具 · 钓鱼 · 酿酒</small></span></a>
+		<section class="statement" id="years">
+			<div class="container statement-inner reveal">
+				<p class="kicker">艾尔岚大陆 · 长期世界</p>
+				<h2 class="statement-big"><span class="grad-text grad-anim">2020 — 2026</span></h2>
+				<p class="statement-sub">一张不清档的长期地图，从第一间木屋，到一座被记住的城。</p>
 			</div>
 		</section>
 
-		<section id="features" class="section gameplay-section">
+		<section class="story">
+			<div class="container story-inner reveal">
+				<blockquote>寻缘草开时相见，叶瓣凋落一轮回。</blockquote>
+				<p>这里保留原版生存最自由的节奏，也用经济、任务和生活拓展，让每一次上线都有事可做。你的第一间木屋、朋友的商店和一座城的轮廓，都会成为下一位玩家路过的风景。</p>
+			</div>
+		</section>
+
+		<section id="features" class="section play-section">
 			<div class="container">
 				<header class="section-heading reveal">
-					<div><p class="section-kicker">THE PLAY LOOP</p><h2>先看玩法，再决定是否加入</h2></div>
-					<p>不是功能堆砌，而是三个会互相推动的生存循环。每个循环都能独立游玩，也会把你的长期投入带回整个世界。</p>
+					<p class="kicker">玩法循环</p>
+					<h2>先看玩法，<span class="grad-text">再决定是否加入</span></h2>
+					<p class="section-lead">不是功能堆砌，而是三个会互相推动的生存循环。每个循环都能独立游玩，也会把你的长期投入带回整个世界。</p>
 				</header>
 
-				<div class="gameplay-workbench reveal">
-					<div class="gameplay-tabs material-iron" role="tablist" aria-label="核心玩法选择">
-						<button id="gameplay-tab-economy" class="gameplay-tab active" type="button" role="tab" aria-selected="true" aria-controls="gameplay-panel-economy" data-gameplay-tab="economy"><span>01</span><strong>动态经济</strong><small>交易驱动市场</small></button>
-						<button id="gameplay-tab-daily" class="gameplay-tab" type="button" role="tab" aria-selected="false" aria-controls="gameplay-panel-daily" tabindex="-1" data-gameplay-tab="daily"><span>02</span><strong>每日任务</strong><small>目标形成节奏</small></button>
-						<button id="gameplay-tab-life" class="gameplay-tab" type="button" role="tab" aria-selected="false" aria-controls="gameplay-panel-life" tabindex="-1" data-gameplay-tab="life"><span>03</span><strong>生活拓展</strong><small>把基地过成家</small></button>
-					</div>
+				<div class="play-cards">
+					<article class="play-card reveal">
+						<img src="img/showcase-stall-02-hd.webp" alt="艾尔岚玩家市场与地摊" loading="lazy">
+						<div class="play-card-overlay">
+							<p class="kicker">玩法循环 01 · 动态经济</p>
+							<h3>每一笔交易，都会改变下一次报价</h3>
+							<p>全服交易让物价实时浮动。采集、摆摊、竞拍和囤货，不是固定菜单，而是玩家共同写下的市场变化。</p>
+							<p class="play-steps">采集<i>→</i>交易<i>→</i>市场反馈<i>→</i>再投入</p>
+						</div>
+					</article>
 
-					<div class="gameplay-panels material-wood">
-						<article id="gameplay-panel-economy" class="gameplay-panel active" role="tabpanel" aria-labelledby="gameplay-tab-economy" tabindex="0" data-gameplay-panel="economy">
-							<div class="gameplay-visual material-frame"><img src="img/gameplay-economy.jpg" alt="艾尔岚玩家市场与商店" loading="lazy"></div>
-							<div class="gameplay-copy">
-								<p class="panel-index">PLAY LOOP 01</p>
-								<h3>每一笔交易，都会改变下一次报价</h3>
-								<p>全服交易让物价实时浮动。采集、摆摊、竞拍和囤货，不是固定菜单，而是玩家共同写下的市场变化。</p>
-								<div class="gameplay-metrics"><span><b>实时</b><small>价格随交易变化</small></span><span><b>自由</b><small>摆摊与竞拍经营</small></span><span><b>长期</b><small>积累商业路线</small></span></div>
-								<ol class="gameplay-loop"><li><span>01</span>采集</li><li><span>02</span>交易</li><li><span>03</span>市场反馈</li><li><span>04</span>再投入</li></ol>
-							</div>
-						</article>
+					<article class="play-card reveal">
+						<img src="img/gameplay-daily.jpg" alt="艾尔岚主城与探索区域" loading="lazy">
+						<div class="play-card-overlay">
+							<p class="kicker">玩法循环 02 · 每日任务</p>
+							<h3>每天上线，都知道下一步可以做什么</h3>
+							<p>探索、建造、挖掘等任务给出清晰方向，同时保留原版生存自由安排节奏的空间，短目标最终沉淀为长期成果。</p>
+							<p class="play-steps">选择<i>→</i>行动<i>→</i>收获<i>→</i>成长</p>
+						</div>
+					</article>
 
-						<article id="gameplay-panel-daily" class="gameplay-panel" role="tabpanel" aria-labelledby="gameplay-tab-daily" tabindex="0" data-gameplay-panel="daily" hidden>
-							<div class="gameplay-visual material-frame"><img src="img/gameplay-daily.jpg" alt="艾尔岚主城与探索区域" loading="lazy"></div>
-							<div class="gameplay-copy">
-								<p class="panel-index">PLAY LOOP 02</p>
-								<h3>每天上线，都知道下一步可以做什么</h3>
-								<p>探索、建造、挖掘等任务给出清晰方向，同时保留原版生存自由安排节奏的空间，短目标最终沉淀为长期成果。</p>
-								<div class="gameplay-metrics"><span><b>多线</b><small>探索 · 建造 · 挖掘</small></span><span><b>每日</b><small>目标清晰可追</small></span><span><b>积累</b><small>奖励持续沉淀</small></span></div>
-								<ol class="gameplay-loop"><li><span>01</span>选择</li><li><span>02</span>行动</li><li><span>03</span>收获</li><li><span>04</span>成长</li></ol>
-							</div>
-						</article>
-
-						<article id="gameplay-panel-life" class="gameplay-panel" role="tabpanel" aria-labelledby="gameplay-tab-life" tabindex="0" data-gameplay-panel="life" hidden>
-							<div class="gameplay-visual material-frame"><img src="img/gameplay-life.jpg" alt="艾尔岚家具、宠物与生活收藏" loading="lazy"></div>
-							<div class="gameplay-copy">
-								<p class="panel-index">PLAY LOOP 03</p>
-								<h3>把生存基地，慢慢过成自己的世界</h3>
-								<p>家具、饰品、钓鱼、酿酒与附魔，让资源不只用来通关，也能用来生活、收藏、布置和表达。</p>
-								<div class="gameplay-metrics"><span><b>布置</b><small>家具与装饰方块</small></span><span><b>专精</b><small>钓鱼 · 酿酒 · 附魔</small></span><span><b>分享</b><small>展示作品与成果</small></span></div>
-								<ol class="gameplay-loop"><li><span>01</span>收集</li><li><span>02</span>制作</li><li><span>03</span>布置</li><li><span>04</span>分享</li></ol>
-							</div>
-						</article>
-					</div>
+					<article class="play-card reveal">
+						<img src="img/gameplay-life.jpg" alt="艾尔岚家具、宠物与生活收藏" loading="lazy">
+						<div class="play-card-overlay">
+							<p class="kicker">玩法循环 03 · 生活拓展</p>
+							<h3>把生存基地，慢慢过成自己的世界</h3>
+							<p>家具、饰品、钓鱼、酿酒与附魔，让资源不只用来通关，也能用来生活、收藏、布置和表达。</p>
+							<p class="play-steps">收集<i>→</i>制作<i>→</i>布置<i>→</i>分享</p>
+						</div>
+					</article>
 				</div>
 
-				<div class="utility-rail reveal" aria-label="辅助玩法">
-					<div><span>04</span><strong>AI 事务所</strong><small>游戏问题随时询问 FIA</small></div>
-					<div><span>05</span><strong>资产保护</strong><small>领地、容器与操作记录</small></div>
-					<div><span>06</span><strong>公屏互动</strong><small>红包、点歌与玩家活动</small></div>
-					<div><span>07</span><strong>原版底层</strong><small>自由探索与红石创造</small></div>
+				<div class="utility-strip reveal" aria-label="辅助玩法">
+					<span><b>04</b>AI 事务所</span>
+					<span><b>05</b>资产保护</span>
+					<span><b>06</b>公屏互动</span>
+					<span><b>07</b>原版底层</span>
 				</div>
+
+				<a class="playbook-entry reveal" href="gameplay.html" aria-label="打开完整玩法百科">
+					<span class="playbook-entry-copy">
+						<span class="kicker">艾尔岚玩法百科</span>
+						<strong>进入玩法百科</strong>
+						<small>核心玩法这里只做速览；四季农耕、跨维度钓鱼、食谱解谜、酿造研究与每日屠龙都在完整页面展开。</small>
+					</span>
+					<span class="playbook-entry-action">打开玩法百科</span>
+				</a>
+
 			</div>
 		</section>
 
 		<section id="intro" class="section world-section">
 			<div class="container">
 				<header class="section-heading reveal">
-					<div><p class="section-kicker">THE WORLD</p><h2>一张值得长期安家的地图</h2></div>
-					<p>没有赛季清档焦虑。你的第一间木屋、朋友的商店和一座城的轮廓，都会成为下一位玩家路过的风景。</p>
+					<p class="kicker">大陆图鉴</p>
+					<h2>一张值得<span class="grad-text">长期安家的地图</span></h2>
+					<p class="section-lead">主城街景、森罗厨房、酒馆庄园与玩家合影，记录着艾尔岚的日常。</p>
 				</header>
 
-				<div class="world-layout">
-					<div class="world-gallery reveal">
-						<figure class="world-shot world-shot-main material-frame"><img src="img/world-street.jpg" alt="艾尔岚樱花主城街道" loading="lazy"><figcaption>主城街道 · 玩家共建</figcaption></figure>
-						<figure class="world-shot material-frame"><img src="img/world-night.jpg" alt="艾尔岚夜景港口" loading="lazy"><figcaption>夜港灯火 · 长期地图</figcaption></figure>
-						<figure class="world-shot material-frame"><img src="img/gameplay-daily.jpg" alt="艾尔岚原创主城建筑群" loading="lazy"><figcaption>原创建筑 · 自由探索</figcaption></figure>
-					</div>
+				<div class="world-grid">
+					<figure class="world-card world-card-wide reveal"><img src="img/city-fifth-overview-day-hd.webp" alt="艾尔岚五周目主城日景全貌" loading="lazy" decoding="async"><figcaption>五周目主城 · 城市全景</figcaption></figure>
+					<figure class="world-card reveal"><img src="img/city-fifth-street-lantern-hd.webp" alt="艾尔岚五周目主城樱花灯笼街" loading="lazy" decoding="async"><figcaption>樱花灯笼街 · 主城日常</figcaption></figure>
+					<figure class="world-card reveal"><img src="img/cover.jpeg" alt="艾尔岚玩家在主城合影" loading="lazy"><figcaption>冒险家集合 · 真实社区</figcaption></figure>
+					<figure class="world-card reveal"><img src="img/showcase-senluo-kitchen-hd.webp" alt="森罗物语厨房中的炉灶与厨具" loading="lazy"><figcaption>森罗厨房 · 厨具工序</figcaption></figure>
+					<figure class="world-card reveal"><img src="img/showcase-senluo-tavern-hd.webp" alt="森罗物语酒馆的酿造葡萄园" loading="lazy"><figcaption>森罗酒馆 · 酿造原料</figcaption></figure>
+				</div>
 
-					<aside class="world-manifesto material-wood reveal">
-						<p class="panel-index">WELCOME TO ELLAN</p>
-						<h3>从第一间木屋，到一座被记住的城。</h3>
-						<p>这里保留原版生存最自由的节奏，也用经济、任务和生活拓展，让每一次上线都有事可做。</p>
-						<dl>
-							<div><dt>2020—2026</dt><dd>多年维护与社区沉淀</dd></div>
-							<div><dt>纯公益服</dt><dd>不出售破坏公平的数值</dd></div>
-							<div><dt>不限红石</dt><dd>技术玩家保留完整发挥空间</dd></div>
-						</dl>
-						<blockquote>寻缘草开时相见，叶瓣凋落一轮回。</blockquote>
-					</aside>
+				<div class="showcase-browser reveal" aria-labelledby="city-showcase-title">
+					<header class="showcase-browser-head">
+						<div><p class="kicker">五周目主城</p><h3 id="city-showcase-title">三种视角，十二张主城实景</h3></div>
+						<p>从城市全景进入街巷，再查看教堂、神树与港口等主城地标。点击分类即可逐张浏览。</p>
+					</header>
+					<div class="showcase-category-grid">
+						<button class="showcase-category-card" type="button" data-showcase-category="city-overview" aria-label="查看五周目主城全景，共 4 张">
+							<img src="img/city-fifth-overview-day-hd.webp" alt="五周目主城白昼全景" loading="lazy" decoding="async">
+							<span><small>01 / 城市轮廓</small><strong>主城全景</strong><em>4 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="city-streets" aria-label="查看五周目主城街巷，共 4 张">
+							<img src="img/city-fifth-street-cherry-hd.webp" alt="五周目主城樱花屋脊与街道" loading="lazy" decoding="async">
+							<span><small>02 / 城中日常</small><strong>樱花街巷</strong><em>4 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="city-landmarks" aria-label="查看五周目主城地标，共 4 张">
+							<img src="img/city-fifth-landmark-tree-hd.webp" alt="五周目主城发光神树" loading="lazy" decoding="async">
+							<span><small>03 / 城市记忆</small><strong>城市地标</strong><em>4 张实景</em></span>
+						</button>
+					</div>
+				</div>
+
+				<div class="showcase-browser reveal" aria-labelledby="showcase-title">
+					<header class="showcase-browser-head">
+						<div><p class="kicker">玩法实景</p><h3 id="showcase-title">六类玩法，二十六张实机截图</h3></div>
+						<p>点击分类查看农耕、厨房、地摊、家具、酒馆与酿酒的完整照片。</p>
+					</header>
+					<div class="showcase-category-grid">
+						<button class="showcase-category-card" type="button" data-showcase-category="farming" aria-label="查看农耕实景，共 4 张">
+							<img src="img/showcase-farming-01-hd.webp" alt="森罗农耕温室" loading="lazy" decoding="async">
+							<span><small>01 / 生活生产</small><strong>农耕</strong><em>4 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="kitchen" aria-label="查看厨房实景，共 6 张">
+							<img src="img/showcase-kitchen-05-hd.webp" alt="森罗厨房料理工坊" loading="lazy" decoding="async">
+							<span><small>02 / 厨具工序</small><strong>厨房</strong><em>6 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="stall" aria-label="查看地摊实景，共 3 张">
+							<img src="img/showcase-stall-01-hd.webp" alt="艾尔岚玩家地摊" loading="lazy" decoding="async">
+							<span><small>03 / 玩家交易</small><strong>地摊</strong><em>3 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="furniture" aria-label="查看家具实景，共 8 张">
+							<img src="img/showcase-furniture-01-hd.webp" alt="艾尔岚家具布置" loading="lazy" decoding="async">
+							<span><small>04 / 空间装饰</small><strong>家具</strong><em>8 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="tavern" aria-label="查看酒馆实景，共 4 张">
+							<img src="img/showcase-tavern-02-hd.webp" alt="森罗酒馆酿造工坊" loading="lazy" decoding="async">
+							<span><small>05 / 酒馆经营</small><strong>酒馆</strong><em>4 张实景</em></span>
+						</button>
+						<button class="showcase-category-card" type="button" data-showcase-category="brewing" aria-label="查看酿酒实景，共 1 张">
+							<img src="img/showcase-brewing-01-hd.webp" alt="森罗酿酒葡萄园夜景" loading="lazy" decoding="async">
+							<span><small>06 / 原料与陈酿</small><strong>酿酒</strong><em>1 张实景</em></span>
+						</button>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -236,13 +240,14 @@
 		<section id="team" class="section team-section">
 			<div class="container">
 				<header class="section-heading reveal">
-					<div><p class="section-kicker">THE KEEPERS</p><h2>世界背后的守夜人</h2></div>
-					<p>从策划、维护到玩家支持，一支长期在线的团队让世界稳定运转。</p>
+					<p class="kicker">运营团队</p>
+					<h2>世界背后的<span class="grad-text">守夜人</span></h2>
+					<p class="section-lead">从策划、维护到玩家支持，一支长期在线的团队让世界稳定运转。</p>
 				</header>
-				<div class="team-bench material-wood reveal">
-					<article class="member"><img src="img/gala.jpg" alt="Galahad 头像" loading="lazy"><div><span>创始者 · 主策划</span><h3>Galahad</h3><p>维护服务器长期体验，也负责玩法方向与社区秩序。</p></div></article>
-					<article class="member"><img src="img/tt.jpg" alt="TypeTheory 头像" loading="lazy"><div><span>服主 · 创造者</span><h3>TypeTheory</h3><p>把奇思妙想变成真正能玩的系统与解决方案。</p></div></article>
-					<article class="member"><img src="img/jelly.jpg" alt="Jelly_Bubble 头像" loading="lazy"><div><span>体验 · 运营支持</span><h3>Jelly_Bubble</h3><p>用温柔而可靠的方式回应玩家与维护日常体验。</p></div></article>
+				<div class="team-row reveal">
+					<article class="member"><img src="img/gala.jpg" alt="Galahad 头像" loading="lazy"><span>创始者 · 主策划</span><h3>Galahad</h3><p>维护服务器长期体验，也负责玩法方向与社区秩序。</p></article>
+					<article class="member"><img src="img/tt.jpg" alt="TypeTheory 头像" loading="lazy"><span>服主 · 创造者</span><h3>TypeTheory</h3><p>把奇思妙想变成真正能玩的系统与解决方案。</p></article>
+					<article class="member"><img src="img/jelly.jpg" alt="Jelly_Bubble 头像" loading="lazy"><span>体验 · 运营支持</span><h3>Jelly_Bubble</h3><p>用温柔而可靠的方式回应玩家与维护日常体验。</p></article>
 				</div>
 			</div>
 		</section>
@@ -250,36 +255,84 @@
 		<section id="links" class="section guide-section">
 			<div class="container">
 				<header class="section-heading reveal">
-					<div><p class="section-kicker">START HERE</p><h2>冒险前的三块路牌</h2></div>
-					<p>先读规则、准备客户端，再进入玩家社区。加入世界只需要几分钟。</p>
+					<p class="kicker">从这里开始</p>
+					<h2>冒险前的<span class="grad-text">三块路牌</span></h2>
+					<p class="section-lead">先读规则、准备客户端，再进入玩家社区。加入世界只需要几分钟。</p>
 				</header>
-				<div class="guide-grid reveal">
-					<a class="guide-link material-iron" href="https://www.yuque.com/galahad-pyzzx/ellan.top" target="_blank" rel="noopener noreferrer"><img class="guide-logo-yuque" src="img/guide-yuque-mono.png" alt="语雀"><span><b>01</b><strong>阅读新手指南</strong><small>版本、规则与基础功能</small></span><em>打开文档</em></a>
-					<a class="guide-link material-iron" href="links/index.html" target="_blank" rel="noopener noreferrer"><img class="guide-logo-eagler" src="img/guide-eaglercraft-mono.png" alt="Eaglercraft"><span><b>02</b><strong>启动在线客户端</strong><small>无需安装，快速进入世界</small></span><em>开始游玩</em></a>
-					<a class="guide-link material-iron" href="https://pd.qq.com/s/9uish7sn4" target="_blank" rel="noopener noreferrer"><img class="guide-logo-qq" src="img/guide-qq-mono.png" alt="QQ 频道"><span><b>03</b><strong>进入玩家频道</strong><small>求助、反馈与活动通知</small></span><em>加入社区</em></a>
+				<div class="guide-rows reveal">
+					<a class="guide-link" href="https://www.yuque.com/galahad-pyzzx/ellan.top" target="_blank" rel="noopener noreferrer"><b>01</b><span><strong>阅读新手指南</strong><small>版本、规则与基础功能 · 语雀文档</small></span><i class="guide-arrow">→</i></a>
+					<a class="guide-link" href="links/index.html" target="_blank" rel="noopener noreferrer"><b>02</b><span><strong>启动在线客户端</strong><small>无需安装，浏览器快速进入世界</small></span><i class="guide-arrow">→</i></a>
+					<a class="guide-link" href="https://pd.qq.com/s/9uish7sn4" target="_blank" rel="noopener noreferrer"><b>03</b><span><strong>进入玩家频道</strong><small>求助、反馈与活动通知 · QQ 频道</small></span><i class="guide-arrow">→</i></a>
 				</div>
 			</div>
 		</section>
 
 		<section id="join" class="section join-section">
-			<div class="container join-board material-wood reveal">
-				<div><p class="section-kicker">READY TO JOIN?</p><h2>下一次上线，就从这里开始</h2><p>复制服务器 IP，或扫码加入官方 QQ 群。我们在艾尔岚大陆等你。</p><div class="join-actions"><button class="btn btn-rune" type="button" onclick="copyServerIP()">复制 IP · ellan.top</button><a class="btn btn-iron" href="https://qm.qq.com/q/hFdwTQpWtW" target="_blank" rel="noopener noreferrer">一键加群</a></div></div>
-				<div class="join-qr material-frame"><img src="img/qrcode.png" alt="艾尔岚官方 QQ 群二维码" loading="lazy"><small>扫码加入官方 QQ 群</small></div>
+			<div class="container join-inner reveal">
+				<p class="kicker">准备加入？</p>
+				<h2>下一次上线，<span class="grad-text">就从这里开始</span></h2>
+				<p class="section-lead">复制服务器 IP，或扫码加入玩家 QQ 群。我们在艾尔岚大陆等你。</p>
+				<div class="join-actions">
+					<button class="btn btn-rune" type="button" onclick="copyServerIP()">复制 IP · ellan.top</button>
+					<a class="btn btn-ghost" href="https://qm.qq.com/q/hFdwTQpWtW" target="_blank" rel="noopener noreferrer">一键加群</a>
+				</div>
+
+				<div id="server-card" class="server-card">
+					<img id="server-icon" src="img/icon.png" alt="服务器图标" width="48" height="48">
+					<div class="server-info">
+						<p class="server-name">艾尔岚生存服<span id="server-version" class="server-version">版本探测中</span></p>
+						<p id="server-motd" class="server-motd">正在连接 ellan.top …</p>
+						<div id="player-strip" class="player-strip" hidden></div>
+					</div>
+					<div class="server-right">
+						<span id="server-players" class="server-players">– / –</span>
+						<span id="server-ping" class="server-ping"></span>
+					</div>
+				</div>
+
+				<div class="join-qr-wrap">
+					<button id="qr-toggle" class="btn btn-quiet btn-sm" type="button" aria-expanded="false" aria-controls="qr-popover">扫码加群</button>
+					<div id="qr-popover" class="qr-popover" hidden><img src="img/qrcode.png" alt="艾尔岚玩家 QQ 群二维码" loading="lazy"><small>扫码加入玩家 QQ 群</small></div>
+				</div>
 			</div>
 		</section>
 	</main>
 
 	<footer>
-		<div class="container footer-inner"><div><strong>ELLAN.TOP</strong><span>艾尔岚工作室 · © 2022—2026</span></div><p>纯公益 · 长期运营 · 原版生存</p><button id="bookmark-btn" class="btn btn-iron btn-sm">收藏本站</button></div>
+		<div class="container footer-inner">
+			<strong>ELLAN.TOP</strong>
+			<span>艾尔岚工作室 · © 2022—2026 · 纯公益 · 长期运营 · 原版生存</span>
+			<button id="bookmark-btn" class="btn btn-ghost btn-sm">收藏本站</button>
+			<p class="footer-legal">艾尔岚是玩家自发组织的非官方社区服务器，与 Mojang Studios、Microsoft 及网易公司无任何隶属、授权或赞助关系；「Minecraft」「我的世界」均为其各自权利方的商标；本站画面均为本服务器实机截图。</p>
+		</div>
 	</footer>
+
+	<div id="showcase-lightbox" class="showcase-lightbox" hidden>
+		<div class="showcase-lightbox-backdrop" data-showcase-close></div>
+		<section class="showcase-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="showcase-lightbox-title">
+			<header>
+				<div><p class="kicker">实机图鉴</p><h3 id="showcase-lightbox-title">主城全景</h3></div>
+				<button id="showcase-close" class="btn btn-quiet btn-sm" type="button" data-showcase-close>关闭</button>
+			</header>
+			<figure class="showcase-lightbox-figure">
+				<img id="showcase-lightbox-image" src="img/showcase-farming-01-hd.webp" alt="森罗农耕温室">
+				<figcaption id="showcase-lightbox-caption">温室农场 · 四季作物</figcaption>
+			</figure>
+			<footer>
+				<button id="showcase-prev" class="btn btn-ghost btn-sm" type="button">上一张</button>
+				<span id="showcase-counter">1 / 4</span>
+				<button id="showcase-next" class="btn btn-ghost btn-sm" type="button">下一张</button>
+			</footer>
+		</section>
+	</div>
 
 	<div id="client-download-popup" class="modal" hidden>
 		<div class="modal-backdrop" onclick="closePopup()"></div>
-		<div class="modal-dialog material-wood" role="dialog" aria-modal="true" aria-labelledby="download-title">
-			<p class="section-kicker">CLIENT DOWNLOAD</p>
-			<h3 id="download-title">选择客户端版本</h3>
-			<p>轻量整合包已预装进入服务器所需内容。</p>
-			<div class="modal-buttons"><button class="btn btn-rune" onclick="window.open('files/Ellan艾尔岚-客户端-26.2-轻量版.exe')">Windows</button><button class="btn btn-iron" onclick="window.open('files/tau-ellan.pkg')">Linux / Mac</button><button class="btn btn-quiet" onclick="closePopup()">取消</button></div>
+		<div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="download-title">
+			<p class="kicker">客户端下载</p>
+			<h3 id="download-title">下载整合包</h3>
+			<p>整合包(.mrpack)仅包含模组与配置，不含游戏本体;需使用正版账号与支持该格式的启动器(如 Modrinth App、Prism Launcher)导入。</p>
+			<div class="modal-buttons"><button class="btn btn-rune" onclick="window.open('files/ellan.mrpack')">整合包 (.mrpack)</button><button class="btn btn-ghost" onclick="window.open('files/tau-ellan.pkg')">Linux / Mac</button><button class="btn btn-quiet" onclick="closePopup()">取消</button></div>
 		</div>
 	</div>
 

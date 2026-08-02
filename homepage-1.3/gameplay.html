@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>玩法百科 · Ellan 艾尔岚 Minecraft 服务器</title>
+	<meta name="language" content="zh-CN">
+	<meta name="author" content="Ellan">
+	<meta name="description" content="完整了解艾尔岚的四季农耕、跨维度钓鱼、森罗厨房与酒馆、204 种附魔、每日屠龙、动态经济、任务订单和玩家交易。">
+	<meta name="keywords" content="Minecraft,艾尔岚,Ellan,MC服务器,农耕,钓鱼,烹饪,酿酒,玩法百科">
+	<meta name="robots" content="All">
+	<link rel="canonical" href="https://ellan.site/gameplay.html">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="玩法百科 · Ellan 艾尔岚">
+	<meta property="og:description" content="原版只是一个起点。走进艾尔岚完整而咬合的生活玩法世界。">
+	<meta property="og:url" content="https://ellan.site/gameplay.html">
+	<meta property="og:image" content="https://ellan.site/img/cover.jpeg">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="icon" href="img/icon.png">
+	<script>
+		try {
+			if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('ellan:page-transition-target') === location.pathname) document.documentElement.classList.add('page-arriving');
+		} catch (e) { /* storage may be unavailable */ }
+	</script>
+	<link rel="stylesheet" href="css/main.css?v=20260801-city-images">
+	<link rel="stylesheet" href="css/gameplay.css?v=20260802-stall-hd">
+	<script defer src="js/main.js?v=20260801-liquid-glass-v3"></script>
+	<script defer src="js/gameplay.js?v=20260801-liquid-glass-v3"></script>
+	<script defer src="js/liquid-glass.js?v=20260801-liquid-glass-v5"></script>
+</head>
+<body class="gameplay-page" data-fixed-nav-section="features">
+	<a class="skip-link" href="#main">跳到主要内容</a>
+	<header id="site-header">
+		<nav class="nav container" aria-label="主导航">
+			<a class="nav-brand" href="index.html#top" aria-label="返回艾尔岚首页">
+				<img src="img/icon.png" alt="艾尔岚 Logo" width="34" height="34">
+				<span class="nav-brand-copy"><strong>ELLAN.TOP</strong></span>
+			</a>
+			<div class="nav-links">
+				<a href="index.html#top" class="nav-link" data-scroll-section="top">首页</a>
+				<a href="index.html#features" class="nav-link active" data-scroll-section="features">核心玩法</a>
+				<a href="index.html#intro" class="nav-link" data-scroll-section="intro">大陆图鉴</a>
+				<a href="index.html#team" class="nav-link" data-scroll-section="team">运营团队</a>
+				<a href="index.html#links" class="nav-link" data-scroll-section="links">新手指南</a>
+			</div>
+			<div class="nav-actions">
+				<button class="btn btn-quiet btn-sm" type="button" onclick="copyServerIP()">复制 IP</button>
+				<a class="btn btn-ghost btn-sm" href="links/index.html" target="_blank" rel="noopener noreferrer">在线游玩</a>
+			</div>
+		</nav>
+	</header>
+	<div class="reading-progress" aria-hidden="true"><i></i></div>
+
+	<main id="main">
+		<section id="top" class="game-hero" aria-labelledby="game-title">
+			<div class="game-hero-glow" aria-hidden="true"></div>
+			<div class="game-hero-inner">
+				<nav class="game-breadcrumb" aria-label="当前位置"><a href="index.html#features">核心玩法</a><span aria-hidden="true">·</span><strong aria-current="page">玩法百科</strong></nav>
+				<p class="game-hero-eyebrow">艾尔岚玩法百科</p>
+				<h1 id="game-title"><span class="grad-text grad-anim">玩法百科</span></h1>
+				<p class="game-hero-cn">艾尔岚 · 玩法全书</p>
+				<p class="game-hero-intro">种地是一门学问，钓鱼是一场游戏，做菜是一场解谜，酿酒是一场实验。每一个系统都能玩很久，也会把你的投入带回整个世界。</p>
+				<p class="first-badge"><b>我的世界 26.2</b><span>森罗厨房与森罗酒馆</span></p>
+				<div class="hero-stat-row" aria-label="玩法规模">
+					<div class="hero-stat"><strong data-count="204">0</strong><span>种自定义附魔</span></div>
+					<div class="hero-stat"><strong data-count="29">0</strong><span>款酿造研究</span></div>
+					<div class="hero-stat"><strong data-count="370" data-suffix="+">0+</strong><span>件家具商品</span></div>
+				</div>
+			</div>
+			<div class="scroll-hint" aria-hidden="true"><span>继续向下</span><i></i></div>
+		</section>
+
+		<nav class="chapter-rail" aria-label="玩法百科章节">
+			<div class="chapter-rail-inner container">
+				<a class="chapter-link active" href="#prologue"><b>00</b>序章</a>
+				<a class="chapter-link" href="#mentors"><b>01</b>教学</a>
+				<a class="chapter-link" href="#world"><b>02</b>世界</a>
+				<a class="chapter-link" href="#systems"><b>03</b>玩法</a>
+				<a class="chapter-link" href="#economy"><b>04</b>经济</a>
+				<a class="chapter-link" href="#orders"><b>05</b>任务</a>
+				<a class="chapter-link" href="#trading"><b>06</b>交易</a>
+				<a class="chapter-link" href="#loop"><b>07</b>闭环</a>
+			</div>
+		</nav>
+
+		<section id="prologue" class="game-chapter" aria-labelledby="prologue-title">
+			<div class="chapter-number" aria-hidden="true">00</div>
+			<div class="container">
+				<header class="chapter-head reveal">
+					<p class="kicker">序章 · 这里是艾尔岚</p>
+					<h2 id="prologue-title">原版只是一个起点</h2>
+					<p class="lead">我们做的不是“加几个插件”那么简单。每一个玩法都被打磨成可以长期研究的系统，并且彼此咬合、环环相扣，构成一个越玩越有的完整世界。</p>
+				</header>
+				<div class="manifesto-grid reveal">
+					<article class="manifesto-item"><b>01 / 农耕</b><h3>种地<br>是一门学问</h3></article>
+					<article class="manifesto-item"><b>02 / 钓鱼</b><h3>钓鱼<br>是一场游戏</h3></article>
+					<article class="manifesto-item"><b>03 / 烹饪</b><h3>做菜<br>是一场解谜</h3></article>
+					<article class="manifesto-item"><b>04 / 酿造</b><h3>酿酒<br>是一场实验</h3></article>
+				</div>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第一章</span></div>
+		<section id="mentors" class="game-chapter alt" aria-labelledby="mentors-title">
+			<div class="chapter-number" aria-hidden="true">01</div>
+			<div class="container">
+				<header class="chapter-head center reveal">
+					<p class="kicker">玩法导师</p>
+					<h2 id="mentors-title">每一个玩法，都有引路人</h2>
+					<p class="lead">不是冷冰冰的教程弹窗，而是有来有往的拜师学艺。走近主城的导师，剧情式问答会带你完成整个入门过程。</p>
+				</header>
+				<div class="npc-grid">
+					<article class="npc-card reveal"><blockquote>在不同的季节适合种植不同的作物，农作物无法在它们不适应的季节存活，这个需要你自己探索。</blockquote><div class="npc-name"><strong>老农大爷</strong><span>农耕导师</span></div><p class="npc-points">选种、种植盆、润土、施肥、土壤探测、播种、浇水与稻草人，一路教到出售收成。</p></article>
+					<article class="npc-card reveal"><blockquote>鱼咬钩以后别急。看准指针扫过目标色块的那一刻，再把它带上岸。</blockquote><div class="npc-name"><strong>渔夫</strong><span>钓鱼导师</span></div><p class="npc-points">演示星露谷式收杆游戏，讲解鱼竿鱼饵、地狱与末地鱼种，以及每小时的钓鱼比赛。</p></article>
+					<article class="npc-card reveal"><blockquote>一张配方不能替你做出好菜。先认厨具，再读谜面，最后用成品证明你的答案。</blockquote><div class="npc-name"><strong>厨师</strong><span>烹饪导师</span></div><p class="npc-points">认识炉灶、炒锅、高汤锅、蒸笼、砧板与石磨，亲手体验食谱谜语的破解流程。</p></article>
+					<article class="npc-card reveal"><blockquote>先用蒸锅提炼酿造物。食物、植物、辅料都可以尝试添加，不同搭配会产出不同效果。</blockquote><div class="npc-name"><strong>酒馆师傅</strong><span>酿酒导师</span></div><p class="npc-points">从选料与蒸锅，到蒸馏器、酿造桶和酒桶陈酿，带你走完整条酿酒管线。</p></article>
+					<article class="npc-card reveal"><blockquote>先兑换筹码，再上桌。输赢都有记录，但规则必须在第一局之前讲清。</blockquote><div class="npc-name"><strong>荷官与庄家</strong><span>娱乐城导师</span></div><p class="npc-points">从零讲解四川麻将、21 点、斗地主等牌桌规则与筹码统一结算。</p></article>
+					<article class="npc-card reveal"><blockquote>悬赏是一条自愿踏入的江湖。你可以成为猎人，也可以永远置身事外。</blockquote><div class="npc-name"><strong>悬赏经纪人</strong><span>刺杀悬赏</span></div><p class="npc-points">讲解发布、领取、结算与到期处理。这是完全可选的玩法，不想参与也不会被强迫。</p></article>
+				</div>
+				<div class="npc-wall reveal" aria-label="更多主城 NPC"><span><strong>60+</strong> 位 NPC</span><span>木匠</span><span>宠物店老板</span><span>玩具店店主</span><span>魔法商店</span><span>银行职员</span><span>裁缝</span><span>诺曼</span><span>taogua</span></div>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第二章</span></div>
+		<section id="world" class="game-chapter" aria-labelledby="world-title">
+			<div class="chapter-number" aria-hidden="true">02</div>
+			<div class="container">
+				<header class="chapter-head reveal"><p class="kicker">大陆区域</p><h2 id="world-title">四大区域，各有所长</h2><p class="lead">艾尔岚不再区分“生存服”和“生电服”。哪里都可以造红石机器，我们尊重每一种玩法自由。</p></header>
+				<div class="freedom-banner reveal"><strong>不限红石 · 自由选址</strong><p>生活玩家可以安静经营，生电玩家也能在更友好的核心环境里建造大型机器。</p></div>
+				<div class="world-regions">
+					<article class="region-card city reveal"><span class="region-code">区域 01 · 世界核心</span><h3>主城</h3><p>商店街、餐馆、酒馆、渔具店、家具店、娱乐城、任务大厅与银行汇聚于此。每小时刷新限时订单，玩家商铺鳞次栉比。</p><div class="region-meta"><span>60+ NPC</span><span>限时订单</span><span>玩家商铺</span></div></article>
+					<article class="region-card valley reveal"><span class="region-code">区域 02 · 生活</span><h3>栖风谷</h3><p>广袤田野与河流，是农耕和钓鱼的沃土。完成地区委托，累积栖风谷声望。</p><div class="region-meta"><span>农业</span><span>渔业</span><span>栖风谷声望</span></div></article>
+					<article class="region-card iron reveal"><span class="region-code">区域 03 · 工程</span><h3>赤铁原</h3><p>采用 Leaves 核心，对红石与大型机器更友好。大机器、刷怪塔与物流系统的理想选址。</p><div class="region-meta"><span>Leaves 核心</span><span>大型机器</span><span>赤铁原声望</span></div></article>
+					<article class="region-card borderland reveal"><span class="region-code">区域 04 · 边境</span><h3>边境地带</h3><p>未知地形与丰富资源构成最远的地平线。没有人替你标出答案，探索本身就是回报。</p><div class="region-meta"><span>冒险</span><span>资源</span><span>未知地形</span></div></article>
+				</div>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第三章</span></div>
+		<section id="systems" class="game-chapter alt" aria-labelledby="systems-title">
+			<div class="chapter-number" aria-hidden="true">03</div>
+			<div class="container">
+				<header class="chapter-head center reveal"><p class="kicker">玩法系统</p><h2 id="systems-title">十种生活方式，一整个世界</h2><p class="lead">从春播秋收到五星酒样，从一场收杆对决到每日最终巨龙。每个系统都能独立游玩，也会把产出送进经济与任务。</p></header>
+
+				<article class="focus-system" aria-labelledby="farming-title">
+					<div class="system-copy reveal"><span class="system-index">01 / 四季农耕</span><h3 id="farming-title">四季农耕</h3><p class="system-tagline">打破原版传统的季节农业</p><p>几十种非原版作物拥有各自适应的季节。种错季节，作物无法存活；看准农时，润土、施肥、检测、浇水与防鸟，每一块田都是长期规划。</p><div class="step-line"><span>种植盆</span><i>→</i><span>洒水润土</span><i>→</i><span>肥料营养</span><i>→</i><span>土壤探测</span><i>→</i><span>播种照料</span></div><details class="lore-details"><summary>展开 30 余种作物与进阶设施</summary><div class="lore-details-content"><div class="tag-list"><span>牛油果</span><span>黑莓</span><span>蓝莓</span><span>卷心菜</span><span>杨桃</span><span>樱桃</span><span>椰子</span><span>玉米</span><span>黄瓜</span><span>榴莲</span><span>茄子</span><span>枸杞</span><span>青豆</span><span>番石榴</span><span>猕猴桃</span><span>韭菜</span><span>生菜</span><span>荔枝</span><span>芒果</span><span>洋葱</span><span>木瓜</span><span>辣椒</span><span>菠萝</span><span>火龙果</span><span>树莓</span><span>水稻</span><span>红薯</span><span>绯红菌</span><span>诡异菌</span></div><p>进阶设施包括主世界、地狱与末地花盆，自动洒水器、稻草人和能收获金币的摇钱树种子。成熟作物可交给诺曼或副岛贸易街的 taogua 收购。</p></div></details></div>
+					<div class="system-visual reveal"><span class="visual-label">四季轮转</span><div class="season-wheel" aria-label="春夏秋冬种植轮盘"><span class="spring">春</span><span class="summer">夏</span><span class="autumn">秋</span><span class="winter">冬</span></div></div>
+				</article>
+
+				<article class="focus-system flip" aria-labelledby="fishing-title">
+					<div class="system-copy reveal"><span class="system-index">02 / 跨维度钓鱼</span><h3 id="fishing-title">跨维度钓鱼</h3><p class="system-tagline">每一次抛竿，都是一场微型对决</p><p>鱼咬钩以后，你需要在指针扫过目标色块时精准收杆。手速与专注力决定渔获星级；主世界、地狱岩浆与末地虚空边缘，各自藏着专属鱼种。</p><div class="step-line"><span>鱼竿</span><i>+</i><span>鱼饵</span><i>+</i><span>鱼钩浮标</span><i>→</i><span>星级渔获</span></div><details class="lore-details"><summary>展开装备体系与五种比赛规则</summary><div class="lore-details-content"><p>鱼竿包括初学者、银竿、金竿、星竿、骨竿与魔法鱼竿；鱼饵包括简单、磁力与野生鱼饵，另有鱼钩、浮标、钓鱼附魔与图腾。</p><div class="tag-list"><span>比总分数</span><span>比数量</span><span>比最大长度</span><span>比最小尺寸</span><span>比总尺寸</span></div><p>每小时随机轮换一场比赛，榜单实时播报剩余时间、你的排名与第一名分数，前三名获得奖励。</p></div></details></div>
+					<div class="system-visual reveal"><span class="visual-label">收杆挑战</span><div class="fishing-game"><div class="fish-track" aria-hidden="true"><i class="fish-zone"></i><i class="fish-pointer"></i></div><strong>看准色块 · 精准收杆</strong><small>目标越稳定，渔获星级越高</small></div></div>
+				</article>
+
+				<article class="focus-system" aria-labelledby="cooking-title">
+					<div class="system-copy reveal"><span class="system-index">03 / 森罗厨房</span><h3 id="cooking-title">森罗厨房</h3><p class="system-tagline">猜谜、试做、提交、永久解锁</p><p>炉灶、炒锅、高汤锅、蒸笼、砧板、石磨和茶壶构成真实工序。未解锁的菜品没有模型，配方书只给烹饪方式与食材谜语。你必须猜出答案，做出成品。</p><div class="step-line"><span>破解谜语</span><i>→</i><span>按工序试做</span><i>→</i><span>提交成品</span><i>→</i><span>永久解锁</span></div><details class="lore-details"><summary>展开厨具与 200+ 菜品示例</summary><div class="lore-details-content"><p>厨具：炉灶、炒锅、高汤锅、锅、蒸笼、砧板、石磨、茶壶、烤肉叉、厨具架与配方板。</p><div class="tag-list"><span>包子</span><span>水煎包</span><span>熟竹筒饭</span><span>大麦茶</span><span>牛肉面</span><span>红烧鱼</span><span>佛跳墙</span><span>四喜丸子汤</span><span>毛血旺</span><span>麻辣兔头</span><span>虎皮青椒</span><span>炸春卷</span><span>青团</span><span>糖葫芦</span><span>拔丝红薯</span><span>油泼鱼</span></div></div></details></div>
+					<div class="system-visual reveal"><span class="visual-label">配方谜题</span><div class="riddle-card" tabindex="0"><span class="riddle-kicker">未解锁食材 · 线索 01</span><blockquote>能盛住一餐温暖的木器 ×1</blockquote><small class="riddle-reveal">悬停或聚焦揭晓谜底</small><div class="riddle-answer"><div><strong>碗 ×1</strong><small>答案确认后，试做并提交成品</small></div></div></div></div>
+				</article>
+
+				<article class="focus-system flip" aria-labelledby="brewing-title">
+					<div class="system-copy reveal"><span class="system-index">04 / 森罗酒馆</span><h3 id="brewing-title">森罗酒馆</h3><p class="system-tagline">火候、蒸馏与桶藏共同决定五星酒样</p><p>选料、蒸锅提炼、玻璃瓶收集、蒸馏提纯、酿造桶发酵与酒桶陈酿组成完整管线。每一款酒只给风味线索与工艺轮廓，精确配比要靠实验摸索。</p><div class="step-line"><span>选料</span><i>→</i><span>提炼</span><i>→</i><span>蒸馏/发酵</span><i>→</i><span>陈酿 1~6 级</span></div><details class="lore-details"><summary>展开星级研究规则与 29 款酒水</summary><div class="lore-details-content"><p>半星及以上酒样可记录配比并开启研究；每次鉴定依次确认工艺路线、投料种类与数量、首味用量和精确时间窗口。零星酒样留下失败笔记。主手拿酒、副手拿纸，潜行右键工作台封口，再左键提交。五星酒样永久解锁完整配方。</p><div class="tag-list"><span>苹果汁</span><span>苹果利口酒</span><span>蜂蜜酒</span><span>啤酒</span><span>黑啤</span><span>小麦啤酒</span><span>葡萄酒</span><span>苹果酒</span><span>白兰地</span><span>威士忌</span><span>火焰威士忌</span><span>伏特加</span><span>蘑菇伏特加</span><span>金酒</span><span>金汤力</span><span>龙舌兰</span><span>朗姆</span><span>苦艾酒</span><span>生命之水</span><span>咖啡</span><span>冰咖啡</span><span>热巧克力</span><span>蛋奶酒</span><span>红桑格利亚</span><span>法式 75</span><span>土豆汤</span></div></div></details></div>
+					<div class="system-visual reveal"><span class="visual-label">酿造研究 · 五星酒样</span><div class="brew-study"><div class="brew-stars" aria-label="五星完美酒样"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></div><div class="brew-scale"><div class="brew-scale-line"></div><div class="brew-scale-labels"><span>记录配比</span><span>确认工艺</span><span>完整配方</span></div></div><p>每一次鉴定，都让未知配方露出更多真相。</p></div></div>
+				</article>
+
+				<div class="deep-system-grid">
+					<article class="deep-card reveal"><div class="deep-head"><b class="deep-no">05</b><div><span class="system-index">自定义附魔</span><h3>204 种自定义附魔</h3><p>战斗、采集、移动、防御和诅咒构成庞大的附魔生态；112 种神器附魔及 Ex- 强化变体，让攻击绽放独一无二的粒子特效。部分附魔还可用右键、左键或 F 键主动释放。</p></div></div><div class="rarity-scale" aria-label="八级附魔稀有度"><div class="rarity common"><b>普通</b><small>汉白玉</small></div><div class="rarity uncommon"><b>罕见</b><small>毛绿</small></div><div class="rarity fine"><b>精良</b><small>霁青</small></div><div class="rarity epic"><b>史诗</b><small>夹竹桃红</small></div><div class="rarity legend"><b>传奇</b><small>淡橘橙</small></div><div class="rarity mythic"><b>稀世</b><small>油菜花黄</small></div><div class="rarity curse"><b>诅咒</b><small>鹤顶红</small></div><div class="rarity skin"><b>皮肤</b><small>粉团花红</small></div></div><div class="feature-family-grid"><div class="feature-family"><b>战斗</b><span>雷神、吸血、暴击、绝杀、流血、眩晕</span></div><div class="feature-family"><b>采集</b><span>伐木、爆破挖掘、再种植、心灵传动</span></div><div class="feature-family"><b>移动</b><span>羽步、滑流、推进、传送、翅膀</span></div><div class="feature-family"><b>防御</b><span>奥术防御、坚韧、修复、救世主、鳃</span></div><div class="feature-family"><b>诅咒</b><span>断粮、饥饿、厄运、永久、无伤</span></div></div></article>
+
+					<article class="deep-card reveal"><div class="deep-head"><b class="deep-no">06</b><div><span class="system-index">家具与装饰</span><h3>建筑党的天堂</h3><p>370+ 件家具持续更新，从温馨小家到恢弘城堡，从街边小店到豪华赌场。可自行合成，也可在班鲁大叔的家具店购买；部分高级目录用声望解锁资格，声望不会被扣除。</p></div></div><div class="furniture-themes"><span>面包店</span><span>中世纪酒馆</span><span>日本和风</span><span>罗马古典</span><span>印度风情</span><span>办公室</span><span>工厂车间</span><span>监狱</span><span>复活节</span><span>玩具店</span><span>赌场</span><span>酒庄</span><span>奇幻精英</span></div></article>
+
+					<article class="deep-card reveal"><div class="deep-head"><b class="deep-no">07</b><div><span class="system-index">猎龙挑战</span><h3>每日四场猎龙</h3><p>多只非原版末影龙按北京时间降临主城末地。每条龙都有独特技能、血量与掉落池；奖励按伤害排名公平分配，最终击杀者额外获得金币。</p></div></div><div class="dragon-table"><div class="dragon-row"><time>10:30</time><strong>裂风猎龙</strong><span>风系技能，行动迅捷</span></div><div class="dragon-row"><time>15:30</time><strong>赤晶暴君</strong><span>水晶轰击，攻高皮厚</span></div><div class="dragon-row"><time>19:30</time><strong>虚空吞噬者</strong><span>虚空技能，诡异难缠</span></div><div class="dragon-row"><time>21:30</time><strong>星蚀终焉龙</strong><span>每日最终挑战，奖励最丰厚</span></div></div><div class="reward-strip"><div><strong>100%</strong><small>伤害第 1</small></div><div><strong>70%</strong><small>第 2~3 名</small></div><div><strong>40%</strong><small>有效参战</small></div><div><strong>+10%</strong><small>最终击杀</small></div></div><details class="lore-details"><summary>展开巨龙掉落池与龙鳞装备</summary><div class="lore-details-content"><p><b>裂风猎龙：</b>铜锭、铁锭、红石、末影珍珠、钻石。<br><b>赤晶暴君：</b>金锭、青金石、红石、钻石、末地水晶。<br><b>虚空吞噬者：</b>钻石、绿宝石、回响碎片、远古残骸（概率）。<br><b>星蚀终焉龙：</b>远古残骸、下界合金碎片、下界之星、潜影壳、附魔金苹果（概率）。</p><p>巨龙还有概率掉落制作龙鳞盔甲的珍贵龙鳞。一套龙鳞甲，就是屠龙勇士的荣耀勋章。</p></div></details></article>
+				</div>
+
+				<div class="light-system-grid">
+					<article class="light-card reveal"><b>08 / 刺杀悬赏</b><h3>刺杀悬赏</h3><p>玩家可用金币或物品悬赏其他玩家，猎人击杀目标即可领取赏金。包含确认界面、排行榜、自动悬赏与到期处理。</p><ul><li>完全选择性玩法</li><li>可以当猎人，也可置身事外</li></ul></article>
+					<article class="light-card reveal"><b>09 / 娱乐城</b><h3>艾尔岚娱乐城</h3><p>每一张赌桌都是实体模型，统一筹码结算，每场牌局都有记录。</p><ul><li>四川麻将、21 点、斗地主</li><li>骗子酒馆、俄罗斯转盘</li><li>老虎机、扑克、足球与决斗</li></ul></article>
+					<article class="light-card reveal"><b>10 / 饰品与外观</b><h3>饰品与外观</h3><p>头饰、背饰、首饰、帽子、背包、气球、副手饰品与鞘翅皮肤，让每位冒险家拥有自己的轮廓。</p><ul><li>任务、活动与娱乐城获取</li><li>魔法药水可变大、变小或复原</li></ul></article>
+				</div>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第四章</span></div>
+		<section id="economy" class="game-chapter" aria-labelledby="economy-title">
+			<div class="chapter-number" aria-hidden="true">04</div>
+			<div class="container">
+				<header class="chapter-head reveal"><p class="kicker">经济系统</p><h2 id="economy-title">会呼吸的市场</h2><p class="lead">金币负责流通，声望证明地区贡献，星辉承载特殊外观。系统商店没有一成不变的价格，而是跟随整座服务器的经济脉搏跳动。</p></header>
+				<div class="currency-grid">
+					<article class="currency-card reveal"><b>01 / 艾尔岚金币</b><h3>艾尔岚金币</h3><p>通过委托、限时订单、钓鱼比赛、屠龙、商店买卖和玩家交易获得，是世界的硬通货。</p></article>
+					<article class="currency-card reveal"><b>02 / 栖风谷声望</b><h3>栖风谷声望</h3><p>完成栖风谷委托与订单获得，用于解锁对应饰品、道具和生活配方。</p></article>
+					<article class="currency-card reveal"><b>03 / 赤铁原声望</b><h3>赤铁原声望</h3><p>完成赤铁原委托与订单获得，记录你对工程与地区发展的贡献。</p></article>
+					<article class="currency-card reveal"><b>04 / 艾尔星辉</b><h3>艾尔星辉</h3><p>特殊渠道货币，用于兑换名牌、道具、鞘翅皮肤等外观特权。</p></article>
+				</div>
+				<article class="market-panel reveal"><div class="market-copy"><p class="kicker">动态定价</p><h3>每一笔买卖，都在改变下一次报价</h3><p>价格参考玩家整体买卖行为、时间、服务器经济状态，甚至中国法定节假日。通货膨胀会被抑制，稀缺物资会被抬价；每件商品又有上下限保护，避免市场失控。</p><div class="factor-list"><span>玩家买入 / 卖出次数</span><span>时间波动</span><span>服务器整体经济</span><span>中国法定节假日</span></div></div><div class="price-chart" role="img" aria-label="金胡萝卜价格在 7.2 到 9.2 金币保护区间内波动"><i class="price-line"></i><span class="price-label">金胡萝卜 · 价格示意</span></div></article>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第五章</span></div>
+		<section id="orders" class="game-chapter alt" aria-labelledby="orders-title">
+			<div class="chapter-number" aria-hidden="true">05</div>
+			<div class="container">
+				<header class="chapter-head center reveal"><p class="kicker">委托与订单</p><h2 id="orders-title">每天上线，都有新的需求</h2><p class="lead">每日、每周与每小时三档节奏，把农业、渔业、厨房、酒窖和工程产能送进真正的市场需求。</p></header>
+				<div class="order-grid">
+					<article class="order-card reveal"><b>每日委托</b><h3>跨域急单</h3><div class="order-example">番茄 ×16<br>红烧鱼 ×2<br>活塞 ×4</div><p class="order-reward">500 金币 + 栖风谷声望 4 + 赤铁原声望 4</p></article>
+					<article class="order-card reveal"><b>每周委托</b><h3>完整产能挑战</h3><div class="weekly-list"><span>谷仓储备</span><span>渔获订单</span><span>烹饪订单</span><span>稀有鱼挑战</span><span>工程订单</span><span>红石组件</span><span>宴会筹备</span><span>茶会</span><span>御膳</span><span>酒窖订单</span></div><p class="order-reward">金币 + 地区声望</p></article>
+					<article class="order-card reveal"><b>主城限时订单</b><h3>手艺人的黄金窗口</h3><div class="order-example">熟竹筒饭 ×10<br>交付时限：16 分钟<br>超时即失效</div><p class="order-reward">高额金币报酬 · 每小时刷新</p></article>
+				</div>
+				<p class="craft-demand reveal">你的手艺，<span class="grad-text">就是主城的刚需。</span></p>
+				<p class="section-lead reveal" style="text-align:center">以上为服务器当前配置的实际示例，任务会持续更新。</p>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第六章</span></div>
+		<section id="trading" class="game-chapter" aria-labelledby="trading-title">
+			<div class="chapter-number" aria-hidden="true">06</div>
+			<div class="container">
+				<header class="chapter-head reveal"><p class="kicker">玩家交易</p><h2 id="trading-title">在艾尔岚，当自己的老板</h2><p class="lead">系统经济提供底盘，玩家交易创造真正的街市。珍品竞拍、路边淘货与店铺经营，让财富也留下人的故事。</p></header>
+				<div class="trade-grid reveal"><article class="trade-card"><b>01</b><h3>每晚玩家拍卖会</h3><p>下班后的狂欢，各种珍品轮番上架。</p></article><article class="trade-card"><b>02</b><h3>每周法拍拍卖会</h3><p>官方组织的法拍专场，错过要再等一周。</p></article><article class="trade-card"><b>03</b><h3>玩家地摊</h3><p>摆摊与箱子商店并存，保留逛街淘货的乐趣。</p></article><article class="trade-card"><b>04</b><h3>主城商铺租赁</h3><p>自行改造装修，开自己的餐馆、酒馆或家具店。</p></article></div>
+			</div>
+		</section>
+
+		<div class="reel-break"><span>第七章</span></div>
+		<section id="loop" class="game-chapter alt" aria-labelledby="loop-title">
+			<div class="chapter-number" aria-hidden="true">07</div>
+			<div class="container">
+				<header class="chapter-head center reveal"><p class="kicker">完整循环</p><h2 id="loop-title">所有道路，最终汇成成长</h2><p class="lead">一种玩法的产出，是另一种玩法的起点。你赚到的不只是金币，而是下一段生活的选择权。</p></header>
+				<div class="loop-map reveal" aria-label="农耕钓鱼到烹饪酿酒再到金币声望的经济闭环"><div class="loop-node"><strong>农耕 + 钓鱼</strong><span>作物、鱼获与维度资源</span></div><div class="loop-arrow"><b>→</b></div><div class="loop-node"><strong>原料互通</strong><span>进入厨房与酒窖的生产管线</span></div><div class="loop-arrow"><b>→</b></div><div class="loop-node"><strong>烹饪 + 酿酒</strong><span>菜品与酒品成为高价值商品</span></div><div class="loop-arrow"><b>→</b></div><div class="loop-node highlight"><strong>金币 + 声望</strong><span>订单、委托、出售与比赛回报</span></div></div>
+				<p class="loop-return reveal">金币与声望 → 渔具 / 种子 / 农具 / 家具 / 饰品 / 配方 / 商铺 → 再投入生活与生产</p>
+				<div class="growth-route reveal"><h3>一位冒险家的成长路线</h3><div class="growth-steps"><article class="growth-step"><b>01</b><div><strong>进入艾尔岚</strong><span>抵达主城，认识这个长期运转的世界。</span></div></article><article class="growth-step"><b>02</b><div><strong>跟随 NPC 入门</strong><span>用剧情式问答学会第一套生活系统。</span></div></article><article class="growth-step"><b>03</b><div><strong>积累第一桶金</strong><span>靠农耕与钓鱼获得稳定收入。</span></div></article><article class="growth-step"><b>04</b><div><strong>学习厨房与酒馆</strong><span>破解配方，制造更高价值的产品。</span></div></article><article class="growth-step"><b>05</b><div><strong>接单、竞赛与屠龙</strong><span>赚取金币和双区声望，参与更大的世界事件。</span></div></article><article class="growth-step"><b>06</b><div><strong>成为生活大师</strong><span>解锁家具饰品，经营属于自己的主城商铺。</span></div></article></div></div>
+			</div>
+		</section>
+
+		<section class="game-finale" aria-labelledby="finale-title">
+			<div class="container reveal"><p class="kicker">你的故事从这里开始</p><h2 id="finale-title">世界由你的双手<br><span class="grad-text">与智慧经营</span></h2><p>跟着导师走过入门，剩下的答案由你亲手写下。欢迎来到艾尔岚，冒险家。</p><div class="finale-actions"><button class="btn btn-rune" type="button" onclick="copyServerIP()">复制 IP · ellan.top</button><a class="btn btn-ghost" href="https://www.yuque.com/galahad-pyzzx/ellan.top" target="_blank" rel="noopener noreferrer">阅读新手指南</a><a class="btn btn-quiet" href="index.html#top">返回首页</a></div></div>
+		</section>
+	</main>
+
+	<footer><div class="container footer-inner"><strong>ELLAN.TOP</strong><span>艾尔岚工作室 · © 2022—2026 · 纯公益 · 长期运营 · 原版生存</span><a class="btn btn-ghost btn-sm" href="index.html#join">查看服务器状态</a><p class="footer-legal">艾尔岚是玩家自发组织的非官方社区服务器，与 Mojang Studios、Microsoft 及网易公司无任何隶属、授权或赞助关系；「Minecraft」「我的世界」均为其各自权利方的商标；本站画面均为本服务器实机截图。</p></div></footer>
+	<div id="toast-root" aria-live="polite"></div>
+</body>
+</html>
