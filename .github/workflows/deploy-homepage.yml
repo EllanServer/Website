@@ -79,6 +79,9 @@ jobs:
           target="$DEPLOY_USER@$DEPLOY_HOST"
           local_checksum="$(sha256sum website/index.html | awk '{print $1}')"
           remote_checksum="$(ssh "${ssh_options[@]}" "$target" "sha256sum '$DEPLOY_PATH/index.html'" | awk '{print $1}')"
+          printf 'Local index.html SHA-256: %s\n' "$local_checksum"
+          printf 'Remote index.html SHA-256: %s\n' "$remote_checksum"
+          ssh "${ssh_options[@]}" "$target" "stat --format='Remote index.html: size=%s modified=%y' '$DEPLOY_PATH/index.html'"
           test "$local_checksum" = "$remote_checksum"
 
           served_checksum="$(curl --fail --silent --show-error --header 'Host: ellan.site' "http://$DEPLOY_HOST/" | sha256sum | awk '{print $1}')"
