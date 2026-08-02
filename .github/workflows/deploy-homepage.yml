@@ -84,7 +84,7 @@ jobs:
           ssh "${ssh_options[@]}" "$target" "stat --format='Remote index.html: size=%s modified=%y' '$DEPLOY_PATH/index.html'"
           test "$local_checksum" = "$remote_checksum"
 
-          served_checksum="$(curl --fail --silent --show-error --header 'Host: ellan.site' "http://$DEPLOY_HOST/" | sha256sum | awk '{print $1}')"
+          served_checksum="$(curl --fail --silent --show-error --insecure --resolve "ellan.site:443:$DEPLOY_HOST" 'https://ellan.site/' | sha256sum | awk '{print $1}')"
           printf 'Nginx response SHA-256: %s\n' "$served_checksum"
           ssh "${ssh_options[@]}" "$target" "find /www/wwwroot -type f -name index.html -exec sha256sum {} + | grep -F '$served_checksum' || true"
           test "$local_checksum" = "$served_checksum"
