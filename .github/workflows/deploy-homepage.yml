@@ -46,10 +46,21 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 600 "$HOME/.ssh/id_ed25519" "$HOME/.ssh/known_hosts"
 
-      - name: Sync homepage to production
+      - name: Deploy homepage to production
         shell: bash
         run: |
           set -euo pipefail
-          rsync -az --delete --no-owner --no-group \
-            -e "ssh -p $DEPLOY_PORT -i $HOME/.ssh/id_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
-            website/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+          test "$DEPLOY_PATH" = '/www/wwwroot/homepage/homepage-1.3'
+
+          ssh_options=(
+            -p "$DEPLOY_PORT"
+            -i "$HOME/.ssh/id_ed25519"
+            -o IdentitiesOnly=yes
+            -o StrictHostKeyChecking=yes
+          )
+          target="$DEPLOY_USER@$DEPLOY_HOST"
+          staging_dir="$DEPLOY_PATH/.deploy-staging-$GITHUB_RUN_ID"
+
+          ssh "${ssh_options[@]}" "$target" "rm -rf '$staging_dir' && mkdir -p '$staging_dir'"
+          tar -C website -czf - . | ssh "${ssh_options[@]}" "$target" "tar -xzf - -C '$staging_dir'"
+          ssh "${ssh_options[@]}" "$target" "find '$DEPLOY_PATH' -mindepth 1 -maxdepth 1 ! -name '.deploy-staging-$GITHUB_RUN_ID' -exec rm -rf {} + && find '$staging_dir' -mindepth 1 -maxdepth 1 -exec mv -t '$DEPLOY_PATH' {} + && rmdir '$staging_dir'"
