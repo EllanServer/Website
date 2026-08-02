@@ -64,3 +64,22 @@ jobs:
           ssh "${ssh_options[@]}" "$target" "rm -rf '$staging_dir' && mkdir -p '$staging_dir'"
           tar -C website -czf - . | ssh "${ssh_options[@]}" "$target" "tar -xzf - -C '$staging_dir'"
           ssh "${ssh_options[@]}" "$target" "find '$DEPLOY_PATH' -mindepth 1 -maxdepth 1 ! -name '.deploy-staging-$GITHUB_RUN_ID' -exec rm -rf {} + && find '$staging_dir' -mindepth 1 -maxdepth 1 -exec mv -t '$DEPLOY_PATH' {} + && rmdir '$staging_dir'"
+
+      - name: Verify uploaded homepage
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ssh_options=(
+            -p "$DEPLOY_PORT"
+            -i "$HOME/.ssh/id_ed25519"
+            -o IdentitiesOnly=yes
+            -o StrictHostKeyChecking=yes
+          )
+          target="$DEPLOY_USER@$DEPLOY_HOST"
+          local_checksum="$(sha256sum website/index.html | awk '{print $1}')"
+          remote_checksum="$(ssh "${ssh_options[@]}" "$target" "sha256sum '$DEPLOY_PATH/index.html'" | awk '{print $1}')"
+          test "$local_checksum" = "$remote_checksum"
+
+          served_checksum="$(curl --fail --silent --show-error --header 'Host: ellan.site' "http://$DEPLOY_HOST/" | sha256sum | awk '{print $1}')"
+          test "$local_checksum" = "$served_checksum"
