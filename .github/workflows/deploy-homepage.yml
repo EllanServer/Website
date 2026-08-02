@@ -85,4 +85,6 @@ jobs:
           test "$local_checksum" = "$remote_checksum"
 
           served_checksum="$(curl --fail --silent --show-error --header 'Host: ellan.site' "http://$DEPLOY_HOST/" | sha256sum | awk '{print $1}')"
+          printf 'Nginx response SHA-256: %s\n' "$served_checksum"
+          ssh "${ssh_options[@]}" "$target" "find /www/wwwroot -type f -name index.html -exec sha256sum {} + | grep -F '$served_checksum' || true"
           test "$local_checksum" = "$served_checksum"
