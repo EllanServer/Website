@@ -437,7 +437,7 @@ html.page-arriving .reading-progress { opacity: 0; }
 	background: linear-gradient(180deg, rgba(8,9,7,.08), rgba(8,9,7,.95));
 }
 .region-card.city::before { background-image: url("../img/world-city-street-hd.webp"); }
-.region-card.valley::before { background-image: url("../img/gameplay-daily.jpg"); }
+.region-card.valley::before { background-image: url("../img/gameplay-daily.jpg?v=20260802"); }
 .region-card.iron::before { background-image: url("../img/showcase-stall-01-hd.webp"); }
 .region-card.borderland::before { background-image: url("../img/hero-world-hd.webp"); }
 .region-code { font-family: var(--font-display); font-size: 10px; letter-spacing: .18em; color: var(--gold); }

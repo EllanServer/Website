@@ -114,17 +114,19 @@
 	}
 
 	/* ===== 首屏主视觉视差 ===== */
+	/* 移动端(窄屏)禁用视差:头图跟随滚动会持续重绘大图,导致下滑卡顿 */
 	var heroArt = document.getElementById('hero-art-img');
 	var hero = document.querySelector('.hero');
 	var parallaxTicking = false;
+	var parallaxEnabled = !reduceMotion && window.matchMedia('(min-width: 768px)').matches;
 	function updateParallax() {
 		parallaxTicking = false;
 		if (!heroArt || !hero) return;
 		var y = window.scrollY;
 		if (y > hero.offsetHeight) return;
-		heroArt.style.transform = 'translateY(' + (y * 0.32).toFixed(1) + 'px) scale(1.02)';
+		heroArt.style.transform = 'translate3d(0,' + (y * 0.32).toFixed(1) + 'px,0) scale(1.02)';
 	}
-	if (!reduceMotion && heroArt) {
+	if (parallaxEnabled && heroArt) {
 		window.addEventListener('scroll', function () {
 			if (parallaxTicking) return;
 			parallaxTicking = true;

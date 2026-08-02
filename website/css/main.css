@@ -1216,6 +1216,8 @@ footer { border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 860px) {
+	/* 移动端关闭首屏视差合成层,降低滚动卡顿 */
+	.hero-art, .hero-art img { will-change: auto; }
 	.container { width: min(100% - 32px, var(--container)); }
 	.nav { height: 64px; }
 	.nav-live { display: none; }
